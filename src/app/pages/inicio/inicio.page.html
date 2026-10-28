@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Descargar Datos API</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-max-width ion-margin-auto">
+    <ion-card class="ion-no-margin ion-margin-bottom">
+      <ion-card-header>
+        <ion-card-title>Configuración de Descarga</ion-card-title>
+        <ion-card-subtitle>Ingresa la URL y el número límite de páginas</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="loadData()">
+          <!-- Campo URL -->
+          <ion-item class="ion-margin-bottom">
+            <ion-input
+              label="URL de la API"
+              labelPlacement="floating"
+              type="url"
+              placeholder="https://api.ejemplo.com/peliculas?pag="
+              [ngModel]="url()"
+              (ngModelChange)="url.set($event)"
+              name="url"
+              [required]="true">
+            </ion-input>
+          </ion-item>
+
+          <!-- Campo Última Página -->
+          <ion-item class="ion-margin-bottom">
+            <ion-input
+              label="Última Página"
+              labelPlacement="floating"
+              type="number"
+              min="1"
+              placeholder="10"
+              [ngModel]="lastPage()"
+              (ngModelChange)="lastPage.set($event)"
+              name="lastPage"
+              [required]="true">
+            </ion-input>
+          </ion-item>
+
+          <!-- Campo Ruta del Array (Opcional) -->
+          <ion-item class="ion-margin-bottom">
+            <ion-input
+              label="Ruta del Array (Opcional)"
+              labelPlacement="floating"
+              type="text"
+              placeholder="ej. results o data.items"
+              [ngModel]="dataPath()"
+              (ngModelChange)="dataPath.set($event)"
+              name="dataPath"
+              helperText="Déjalo en blanco si la API devuelve directamente un Array">
+            </ion-input>
+          </ion-item>
+
+          <!-- Botón de Acción -->
+          <div class="ion-text-center">
+            <ion-button
+              shape="round"
+              type="submit"
+              class="ion-margin-top"
+              [disabled]="!url() || lastPage() <= 0">
+              <ion-icon slot="start" name="download-outline"></ion-icon>
+              Obtener y Guardar JSON
+            </ion-button>
+
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Vista previa o contador de resultados (opcional) -->
+    @if (data().length > 0) {
+      <ion-card color="light">
+        <ion-card-content class="ion-text-center">
+          <ion-text color="success">
+            <h2>¡Descarga Completada!</h2>
+          </ion-text>
+          <p>Se han procesado <strong>{{ data().length }}</strong> elementos.</p>
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+</ion-content>

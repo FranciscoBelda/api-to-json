@@ -1,8 +1,8 @@
 {
   "name": "02-api-to-json",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Francisco Belda",
+  "homepage": "https://www.youtube.com/@franciscobelda",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -32,6 +32,8 @@
     "@capacitor/keyboard": "8.0.6",
     "@capacitor/status-bar": "8.0.4",
     "@ionic/angular": "^9.0.0",
+    "@types/file-saver": "^2.0.7",
+    "file-saver": "^2.0.5",
     "ionicons": "^8.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -56,5 +58,5 @@
     "vitest": "~5.0.5"
   },
   "prettier": "@ionic/prettier-config",
-  "description": "An Ionic project"
+  "description": "Proyecto de Ionic para crear un JSON con toda la información de una API paginada."
 }
