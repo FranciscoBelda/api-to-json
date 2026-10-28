@@ -1,0 +1,7 @@
+{
+  "name": "02-api-to-json",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
